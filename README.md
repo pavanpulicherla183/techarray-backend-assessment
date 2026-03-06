@@ -271,6 +271,37 @@ This allows the API to remain fast while heavy processing happens asynchronously
 
 ---
 
+## Scaling and Production Architecture (AWS)
+
+In production this system could be deployed using AWS managed services.
+
+API Layer
+- Django application deployed using Docker containers on AWS ECS or EKS.
+
+Load Balancing
+- AWS Application Load Balancer distributes incoming API requests.
+
+Database
+- PostgreSQL hosted on AWS RDS with read replicas for scaling.
+
+Background Processing
+- Celery workers deployed as separate ECS services.
+
+Message Broker
+- Redis hosted on AWS ElastiCache.
+
+Storage
+- Transaction data stored in PostgreSQL with backups and automated scaling.
+
+Monitoring
+- AWS CloudWatch for logs and metrics.
+- AWS X-Ray for request tracing.
+
+Security
+- API behind HTTPS using AWS ACM.
+- Secrets stored using AWS Secrets Manager.
+
+
 # Author
 
 Pavan Kumar Reddy Pulicherla
